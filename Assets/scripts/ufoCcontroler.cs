@@ -1,16 +1,31 @@
 
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class UfoController : MonoBehaviour
 {
-    public float speed = 10.0f;
 
+    //  set the speed of the ufo
+     float speed = 4f;
+
+
+    // Update is called once per frame
     void Update()
     {
+         // Get input from the player horizontal and vertical
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-        transform.Translate(movement * speed * Time.deltaTime, Space.World);
+// creates a new vector for movement based on the input
+        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+// For each frame, add the vector's speed to the position vector
+        transform.Translate(movement * speed * Time.deltaTime);
     }
+
+
+    // Start is called before the first frame update
+    void Start () {
+	
+	}
+	
+	
 }

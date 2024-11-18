@@ -7,8 +7,8 @@ public class MetiorController : MonoBehaviour
 
     public float speed = 2.1f;
 
-    // startposition
-    public Vector2 StartPosition;
+    // Startposition för meteoren
+    public Vector3 StartPosition; // Change to Vector3 to include z-coordinate
 
     // vilken waypoint objektet färdas mot
     private int index;
@@ -42,15 +42,19 @@ public class MetiorController : MonoBehaviour
         index = Random.Range(0, Waypoints.Length);
     }
 
-
     // Sätter en slumpmässig startposition inom skärmens gränser
     void SetRandomStartPosition()
-    {  // random  postion 0 till senens dimentioner
+    {
+        // Generera en slumpmässig position inom skärmens dimensioner
         float screenX = Random.Range(0f, Screen.width);
         float screenY = Random.Range(0f, Screen.height);
 
-        // Konvertera skärmens koordinater till världens koordinater, ser till att de hålls inom spelområdet
-        Vector2 Wordposition = Camera.main.ScreenToWorldPoint(new Vector2(screenX, screenY));
-        StartPosition = Wordposition;
+        // Konvertera skärmens koordinater till världens koordinater
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector2(screenX, screenY));
+
+        // Sätt en fördefinierad z-värde
+        worldPosition.z = -2f; // Set your predefined z-value here
+
+        StartPosition = worldPosition;
     }
 }

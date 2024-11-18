@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UfoController : MonoBehaviour
+public class ufoControlerBasic : MonoBehaviour
 {
     // Set the speed of the UFO
     public float speed = 4f;
@@ -8,8 +8,9 @@ public class UfoController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Set the UFO's starting position to (0, 0)
-        transform.position = new Vector2(0.0f, 0.0f);
+        
+        // Set the UFO's starting position to (0, 0) + zindex
+        transform.position = new Vector3(0.0f, 0.0f,-2f);
     }
 
     // Update is called once per frame

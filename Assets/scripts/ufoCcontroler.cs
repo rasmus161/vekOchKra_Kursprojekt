@@ -5,7 +5,8 @@ public class UfoController : MonoBehaviour
 {
 
     //  set the speed of the ufo
-     float speed = 4f;
+     float speed = 4;
+     
 
 
     // Update is called once per frame

@@ -42,11 +42,14 @@ public class MetiorController : MonoBehaviour
         index = Random.Range(0, Waypoints.Length);
     }
 
+
+    // Sätter en slumpmässig startposition inom skärmens gränser
     void SetRandomStartPosition()
-    {
+    {  // random  postion 0 till senens dimentioner
         float screenX = Random.Range(0f, Screen.width);
         float screenY = Random.Range(0f, Screen.height);
 
+        // Konvertera skärmens koordinater till världens koordinater, ser till att de hålls inom spelområdet
         Vector2 Wordposition = Camera.main.ScreenToWorldPoint(new Vector2(screenX, screenY));
         StartPosition = Wordposition;
     }

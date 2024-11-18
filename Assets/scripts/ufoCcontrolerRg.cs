@@ -46,7 +46,7 @@ public class UfoController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-
+         // Check if the UFO collides with an object that has the "MetiorController" component
         if (collision.gameObject.GetComponent<MetiorController>() != null)
         {
 
@@ -55,10 +55,20 @@ public class UfoController : MonoBehaviour
         }
 
     }
+    // check if the UFO pases throu the side boundaries yay
+    void OnTriggerEnter2D(Collider2D collision) {
+
+        if(collision.gameObject.GetComponent<Boundary>() != null ) {
+
+           
+            RestartGame(); // Starta om spelet
+        }
+    }
 
     void RestartGame()
-    {
+    {   
         // Laddar om den aktuella scenen
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Debug.Log("You died"); 
     }
 }

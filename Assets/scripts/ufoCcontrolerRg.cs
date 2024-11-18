@@ -1,8 +1,10 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UfoController : MonoBehaviour
 {
-   
+
     public float speed = 4f; // Set the speed of the UFO
     public float rotationSpeed = 150f; // set  rotation
     public float mass = 20; // Predetermined mass
@@ -36,5 +38,27 @@ public class UfoController : MonoBehaviour
         // Apply force to the Rigidbody2D component for movement
         Vector2 thrust = transform.up * thrustInput * speed;
         rb.AddForce(thrust);
+    }
+
+
+
+    // Kollisionsdetektering
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        if (collision.gameObject.GetComponent<MetiorController>() != null)
+        {
+
+
+            RestartGame(); // Starta om spelet
+        }
+
+    }
+
+    void RestartGame()
+    {
+        // Laddar om den aktuella scenen
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

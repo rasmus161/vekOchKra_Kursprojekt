@@ -49,7 +49,7 @@ public class MetiorController : MonoBehaviour
         float screenX = Random.Range(0f, Screen.width);
         float screenY = Random.Range(0f, Screen.height);
 
-        // Konvertera skärmens koordinater till världens koordinater
+        // Konvertera skärmens koordinater till unity units
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector2(screenX, screenY));
 
         // Sätt en fördefinierad z-värde

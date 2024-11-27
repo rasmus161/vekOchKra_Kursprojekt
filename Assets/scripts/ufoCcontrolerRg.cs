@@ -35,7 +35,7 @@ public class UfoController : MonoBehaviour
         // Rotate the UFO
         rb.rotation -= rotationInput * rotationSpeed * Time.deltaTime;
 
-        // Apply force to the Rigidbody2D component for movement
+        // Apply force to the Rigidbody2D component for movement so the ufo
         Vector2 thrust = transform.up * thrustInput * speed;
         rb.AddForce(thrust);
     }

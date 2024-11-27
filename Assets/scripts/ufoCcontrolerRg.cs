@@ -35,7 +35,7 @@ public class UfoController : MonoBehaviour
         // Rotate the UFO
         rb.rotation -= rotationInput * rotationSpeed * Time.deltaTime;
 
-        // Apply force to the Rigidbody2D component for movement
+        // Apply force to the Rigidbody2D component for movement so the ufo
         Vector2 thrust = transform.up * thrustInput * speed;
         rb.AddForce(thrust);
     }
@@ -51,17 +51,17 @@ public class UfoController : MonoBehaviour
         {
 
 
-            RestartGame(); // Starta om spelet
+            RestartGame(); 
         }
 
     }
-    // check if the UFO pases throu the side boundaries yay
+    // check if the UFO pases  the side boundaries yay
     void OnTriggerEnter2D(Collider2D collision) {
 
         if(collision.gameObject.GetComponent<Boundary>() != null ) {
 
            
-            RestartGame(); // Starta om spelet
+            RestartGame(); 
         }
     }
 

@@ -25,32 +25,35 @@ public class CanonControler : MonoBehaviour
     void OnMouseDrag()
     {
         current = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        UpdateUI();
+        // UpdateUI();
     }
 
     void OnMouseUp()
     {
         current = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         ApplyImpulse();
-        ClearUI();
+        //  ClearUI();
     }
-
-    void UpdateUI()
-    {
-        Vector2 direction = (current - start).normalized;
-        float distance = Vector2.Distance(start, current);
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-        if (forceText != null)
+    /*
+        void UpdateUI()
         {
-            forceText.text = $"Force: {distance * 10f} N";
-        }
+            Vector2 direction = (current - start).normalized;
+            float distance = Vector2.Distance(start, current);
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        if (angleText != null)
-        {
-            angleText.text = $"Angle: {angle}°";
+            if (forceText != null)
+            {
+                forceText.text = $"Force: {distance * 10f} N";
+            }
+
+            if (angleText != null)
+            {
+                angleText.text = $"Angle: {angle}°";
+            }
         }
-    }
+    */
+
+    
 
     void ApplyImpulse()
     {
@@ -59,16 +62,6 @@ public class CanonControler : MonoBehaviour
         rb.AddForce(direction * distance * 10f, ForceMode2D.Impulse);
     }
 
-    void ClearUI()
-    {
-        if (forceText != null)
-        {
-            forceText.text = "";
-        }
 
-        if (angleText != null)
-        {
-            angleText.text = "";
-        }
-    }
+
 }

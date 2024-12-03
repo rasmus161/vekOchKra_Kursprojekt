@@ -3,16 +3,16 @@ using UnityEngine.UI;
 
 public class Slingshot : MonoBehaviour
 {
-    public GameObject projectilePrefab; 
-    public Transform slingshotOrigin; 
-    public float maxDragDistance = 1f; 
-    public LineRenderer lineRenderer; 
-    public Text powerText; 
-    public Text angleText; 
+    public GameObject projectilePrefab;
+    public Transform slingshotOrigin;
+    public float maxDragDistance = 1f;
+    public LineRenderer lineRenderer;
+    public Text powerText;
+    public Text angleText;
 
-    private Vector3 dragStartPosition; 
-    private GameObject currentProjectile; 
-    private bool isDragging = false; 
+    private Vector3 dragStartPosition;
+    private GameObject currentProjectile;
+    private bool isDragging = false;
 
     void Start()
     {
@@ -27,6 +27,8 @@ public class Slingshot : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             StartDrag(); // Start dragging when the mouse button is pressed
+
+
         }
         else if (Input.GetMouseButton(0) && isDragging)
         {
@@ -48,7 +50,7 @@ public class Slingshot : MonoBehaviour
 
         // Instantiate the projectile at the slingshot origin
         currentProjectile = Instantiate(projectilePrefab, slingshotOrigin.position, Quaternion.identity);
-        isDragging = true; 
+        isDragging = true;
     }
 
     void ContinueDrag()
@@ -75,40 +77,40 @@ public class Slingshot : MonoBehaviour
 
         // Apply the force to the projectile's Rigidbody2D component
         currentProjectile.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
-        isDragging = false; 
+        isDragging = false;
     }
 
-    
-void UpdateTrajectory()
-{
-    // Number of points to simulate in the trajectory
-    int numPoints = 25;
-    
-    float distance = 0.1f;
 
-    // Calculate the initial velocity based on the drag vector
-    Vector3 initialVelocity = CalculateForce() / currentProjectile.GetComponent<Rigidbody2D>().mass;
-
-    // Array to store the trajectory points
-    Vector3[] trajectoryPoints = new Vector3[numPoints];
-
-    // Initial position of the projectile
-    Vector3 currentPosition = slingshotOrigin.position;
-
-    // Simulate the trajectory
-    for (int i = 0; i < numPoints; i++)
+    void UpdateTrajectory()
     {
-        // Calculate the position at this point in time
-        trajectoryPoints[i] = currentPosition;
+        // Number of points to simulate in the trajectory
+        int numPoints = 25;
 
-        // Update the position based on the velocity and time step
-        currentPosition += initialVelocity * distance;
+        float distance = 0.1f;
+
+        // Calculate the initial velocity based on the drag vector
+        Vector3 initialVelocity = CalculateForce() / currentProjectile.GetComponent<Rigidbody2D>().mass;
+
+        // Array to store the trajectory points
+        Vector3[] trajectoryPoints = new Vector3[numPoints];
+
+        // Initial position of the projectile
+        Vector3 currentPosition = slingshotOrigin.position;
+
+        // Simulate the trajectory
+        for (int i = 0; i < numPoints; i++)
+        {
+            // Calculate the position at this point in time
+            trajectoryPoints[i] = currentPosition;
+
+            // Update the position based on the velocity and time step
+            currentPosition += initialVelocity * distance;
+        }
+
+        // Update the LineRenderer with the trajectory points
+        lineRenderer.positionCount = numPoints;
+        lineRenderer.SetPositions(trajectoryPoints);
     }
-
-    // Update the LineRenderer with the trajectory points
-    lineRenderer.positionCount = numPoints;
-    lineRenderer.SetPositions(trajectoryPoints);
-}
     Vector3 CalculateDragVector()
     {
         // Convert current mouse position to world position

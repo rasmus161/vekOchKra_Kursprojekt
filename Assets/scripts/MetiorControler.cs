@@ -50,10 +50,9 @@ public class MetiorController : MonoBehaviour
         float screenY = Random.Range(0f, Screen.height);
 
         // Konvertera skärmens koordinater till unity units
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector2(screenX, screenY));
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(screenX, screenY));
 
-        // Sätt en fördefinierad z-värde
-        worldPosition.z = -2f; // Set your predefined z-value here
+        
 
         StartPosition = worldPosition;
     }

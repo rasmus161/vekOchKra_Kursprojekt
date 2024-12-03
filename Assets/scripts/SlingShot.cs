@@ -113,7 +113,7 @@ void UpdateTrajectory()
     {
         // Convert current mouse position to world position
         Vector3 currentMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        
+        currentMousePosition.z = 0; // Ensure the z-coordinate 
 
         // Calculate the drag vector and clamp its magnitude
         Vector3 dragVector = currentMousePosition - dragStartPosition;

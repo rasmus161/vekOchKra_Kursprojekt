@@ -42,7 +42,7 @@ public class UfoController : MonoBehaviour
 
 
 
-    // Kollisionsdetektering
+    // Kollisions detections
 
     void OnCollisionEnter2D(Collision2D collision)
     {

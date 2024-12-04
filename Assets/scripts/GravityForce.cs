@@ -19,9 +19,17 @@ public class GravityForce : MonoBehaviour
     
     void Update()
     {
-        float r = Vector2.Distance(transform.position, Rock2.transform.position);
+        float r = Mathf.Abs( Vector2.Distance(transform.position, Rock2.transform.position) );
+       
+        
 
-        float F = G * ((Rock2Physics.mass * planet1Physics.mass) / (r *r));
+
+        float F = G * ((Rock2Physics.mass * planet1Physics.mass) / (r * r));
+        
+        if(r < 1)
+        {
+        return;
+        }
 
         Vector2 Direction = transform.position - Rock2.transform.position;
 

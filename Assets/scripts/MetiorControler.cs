@@ -8,7 +8,7 @@ public class MetiorController : MonoBehaviour
     public float speed = 2.1f;
 
     // Startposition för meteoren
-    public Vector3 StartPosition; // Change to Vector3 to include z-coordinate
+    public Vector3 StartPosition; 
 
     // vilken waypoint objektet färdas mot
     private int index;
@@ -52,8 +52,7 @@ public class MetiorController : MonoBehaviour
         // Konvertera skärmens koordinater till unity units
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(screenX, screenY));
 
-        
-
+    
         StartPosition = worldPosition;
     }
 }

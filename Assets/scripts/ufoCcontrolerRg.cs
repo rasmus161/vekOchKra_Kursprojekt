@@ -28,7 +28,7 @@ public class UfoController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Get input from the player rotation
+        // Get input from the player rotation and thrust
         float rotationInput = Input.GetAxis("Horizontal");
         float thrustInput = Input.GetAxis("Vertical");
 
@@ -46,7 +46,7 @@ public class UfoController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // Check if the UFO collides with an object that has the "MetiorController" component
+        // Check if the UFO collides with an object that has the "MetiorController" component or "misile"
         if (collision.gameObject.GetComponent<MetiorController>() != null || collision.gameObject.GetComponent<misile>() != null)
         {
 

@@ -91,13 +91,14 @@ public class Slingshot : MonoBehaviour
         // Calculate the initial velocity based on the drag vector
         Vector3 initialVelocity = CalculateForce() / currentProjectile.GetComponent<Rigidbody2D>().mass;
 
-        // Array to store the trajectory points
+        // Array to store the trajectory line
         Vector3[] trajectoryPoints = new Vector3[numPoints];
 
         // Initial position of the projectile
         Vector3 currentPosition = slingshotOrigin.position;
 
-        // Simulate the trajectory
+
+        // Simulate the trajectory line
         for (int i = 0; i < numPoints; i++)
         {
             // Calculate the position at this point in time
@@ -107,7 +108,7 @@ public class Slingshot : MonoBehaviour
             currentPosition += initialVelocity * distance;
         }
 
-        // Update the LineRenderer with the trajectory points
+        // Update the LineRenderer with the trajectory 
         lineRenderer.positionCount = numPoints;
         lineRenderer.SetPositions(trajectoryPoints);
     }

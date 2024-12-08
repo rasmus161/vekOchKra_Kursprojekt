@@ -27,26 +27,25 @@ public class Friction : MonoBehaviour
         
         if (Force.magnitude < FMax && physics.velocity.magnitude < 0.1f)
         {
-            // Ställ in friktionskraften så att den motverkar den applicerade kraften
+            
             FrictionForce = -Force.normalized * FMax;
 
-            // Stoppa objektets rörelse helt
+            
             physics.velocity = Vector2.zero;
         }
         else
         {
-            // Om objektet rör sig
-            // Beräkna friktionskraften baserat på kinetisk friktion
+            
             FrictionForce = -physics.velocity.normalized * KineticFriction * physics.mass * 9.82f;
         }
 
-        // Friktionen ska appliceras i tangentvektorns riktning
+        
         FrictionForce = Vector2.Dot(FrictionForce, tangentDirection.normalized) * tangentDirection;
 
-        // Beräkna den resulterande kraften genom att lägga ihop friktionskraften och den applicerade kraften
+        
         Vector2 ResultingForce = FrictionForce + Force;
 
-        // Applicera den resulterande kraften på objektet
+        
         physics.AddForce(ResultingForce);
     }
     }

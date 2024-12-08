@@ -25,12 +25,12 @@ public class Friction : MonoBehaviour
         Vector2 directionToPlanet = (planetPosition - (Vector2)transform.position).normalized;
         Vector2 tangentDirection = new Vector2(-directionToPlanet.y, directionToPlanet.x);
         
-        if (Force.magnitude < FMax && physics.velocity.magnitude < 0.1f)
+        if (Force.magnitude < StaticFriction * physics.mass * 9.82f && physics.velocity.magnitude < 0.1f)
         {
-            
-            FrictionForce = -Force.normalized * FMax;
+    
+            FrictionForce = -Force.normalized * StaticFriction * physics.mass * 9.82f;
 
-            
+    
             physics.velocity = Vector2.zero;
         }
         else
